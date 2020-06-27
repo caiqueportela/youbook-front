@@ -1,3 +1,11 @@
-.container {
-  padding-top: 80px;
+::ng-deep {
+  .mat-form-field-valid.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: var(--success) !important;
+  }
+
+  mat-form-field.mat-form-field-valid {
+    .mat-hint, input, ::placeholder, .mat-form-field-label {
+       color: var(--success) !important;
+    }
+  }
 }

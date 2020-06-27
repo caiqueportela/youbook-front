@@ -1,0 +1,30 @@
+<h4 class="text-center">Login</h4>
+
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Usuário</mat-label>
+    <input #usernameInput matInput formControlName="username" [errorStateMatcher]="matcher" placeholder="Ex. bob@youbook.com" required>
+    <mat-error *ngIf="loginForm.get('username').hasError('email')">
+      Insira um e-mail válido!
+    </mat-error>
+    <mat-error *ngIf="loginForm.get('username').hasError('required')">
+      Usuário é <strong>requerido</strong>!
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input matInput formControlName="password" [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'" placeholder="Senha" required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+      Senha é <strong>requerido</strong>!
+    </mat-error>
+  </mat-form-field>
+
+  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block">
+    login
+  </button>
+
+</form>
+
+<p>Não possui um usuário? <a [routerLink]="['signup']">Registre-se</a></p>

@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,10 +12,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MatToolbarModule],
+  imports: [
+    CommonModule
+  ],
   exports: [
     MatToolbarModule,
     MatSidenavModule,
@@ -27,6 +31,8 @@ import { MatTreeModule } from '@angular/material/tree';
     MatSelectModule,
     MatChipsModule,
     MatTreeModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
   ],
 })
 export class AngularMaterialModule {}

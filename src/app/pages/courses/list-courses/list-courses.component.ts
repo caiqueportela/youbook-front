@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/internal/operators';
 
-import { Course } from 'src/app/models/Course';
+import { Course } from 'src/app/models/course';
 
 @Component({
   templateUrl: './list-courses.component.html',

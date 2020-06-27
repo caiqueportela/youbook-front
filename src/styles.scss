@@ -1,4 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding-top: 60px;
+}
+
+.break-word {
+  word-break: break-all;
+}
+
+.snack-warning {
+  color: #000 !important;
+  background-color: var(--warning) !important;
+}
+
+.snack-success {
+  color: #FFF !important;
+  background-color: var(--success) !important;
+}
+
+.fixed-bottom {
+  z-index: 999 !important;
+}
