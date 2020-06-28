@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+
+import localeBr from '@angular/common/locales/br';
+registerLocaleData(localeBr);
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,20 +16,18 @@ import { RequestInterceptor } from './shared/interceptors/request/request.interc
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    //FroalaEditorModule.forRoot(),
-    //FroalaViewModule.forRoot(),
     ErrorsModule,
     CoreModule,
     AppRoutingModule,
   ],
   bootstrap: [
-    AppComponent
+    AppComponent,
   ],
   providers: [
     {
@@ -37,7 +39,11 @@ import { RequestInterceptor } from './shared/interceptors/request/request.interc
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
       multi: true,
-    }
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'br'
+    },
   ]
 })
 export class AppModule { }

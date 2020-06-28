@@ -3,7 +3,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  padding-top: 60px;
+  //padding-top: 56px;
 }
 
 .break-word {
@@ -22,4 +22,21 @@ body {
 
 .fixed-bottom {
   z-index: 999 !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4169e1;
 }

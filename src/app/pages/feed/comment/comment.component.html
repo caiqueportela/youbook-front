@@ -1,0 +1,35 @@
+<mat-card class="border border-info rounded my-1">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <ngx-avatar [name]="comment.owner.username"></ngx-avatar>
+    </div>
+    <mat-card-title>
+      {{ comment.owner.username }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ comment.createdAt | date:'short' }}
+    </mat-card-subtitle>
+
+  </mat-card-header>
+  <mat-card-content>
+    <div class="comment">
+      {{ comment.message }}
+    </div>
+  </mat-card-content>
+  <mat-card-actions #rootNode>
+    <button mat-icon-button aria-label="">
+      <mat-icon>info</mat-icon>
+    </button>
+    <button mat-button color="primary" appCommentOwnerOnly [ownedComment]="comment" [rootNode]="rootNode">
+      <span class="material-icons">edit</span>
+      Editar
+    </button>
+    <button mat-button color="warn" appCommentOwnerOnly [ownedComment]="comment" [rootNode]="rootNode">
+      <span class="material-icons">delete</span>
+      Remover
+    </button>
+    <div class="float-right" *ngIf="comment.updatedAt">
+      <small>Editado em: {{ comment.updatedAt | date:'short' }}</small>
+    </div>
+  </mat-card-actions>
+</mat-card>

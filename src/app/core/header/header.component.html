@@ -1,20 +1,16 @@
 <div class="fixed-top loading">
   <app-loading></app-loading>
 </div>
-<header class="fixed-top">
+<header class="sticky-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" [routerLink]="['']">
       <span class="material-icons d-inline-block align-top">menu_book</span>
       Youbook
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown" #rootNode>
       <ul class="navbar-nav mr-auto" appShowIfLogged [rootNode]="rootNode">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['feed']">Início</a>
+          <a class="nav-link" [routerLink]="['feed']" routerLinkActive="active">Início</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -30,12 +26,19 @@
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
+        <li class="nav-item d-block d-lg-none d-xl-none">
+          <button class="btn btn-danger mb-2" type="button" (click)="logout()">Sair</button>
+        </li>
       </ul>
     </div>
-    <div *ngIf="(user$ | async) as user">
+    <div class="d-none d-lg-block d-xl-block" *ngIf="(user$ | async) as user">
       <i class="fa fa-user-circle mr-1"></i>
       <a class="mr-1">{{ user.username }}</a>
       <button class="btn btn-danger my-2 my-sm-0" type="button" (click)="logout()">Sair</button>
     </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </nav>
 </header>

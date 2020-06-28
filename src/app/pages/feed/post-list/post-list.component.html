@@ -1,1 +1,20 @@
-<p>post-list works!</p>
+<form [formGroup]="postForm" (submit)="makePost()">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div [froalaEditor]="options" formControlName="message"></div>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-10">
+      <button class="float-right" mat-raised-button color="primary" [disabled]="postForm.invalid">Enviar</button>
+    </div>
+  </div>
+</form>
+
+<div class="row" *ngFor="let post of posts">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <app-post [post]="post"></app-post>
+  </div>
+  <div class="col-2"></div>
+</div>

@@ -1,0 +1,39 @@
+<mat-card class="border border-primary my-3">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <ngx-avatar [name]="post.owner.username"></ngx-avatar>
+    </div>
+    <mat-card-title>
+      {{ post.owner.username }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ post.createdAt | date:'short' }}
+    </mat-card-subtitle>
+
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="post">
+      <div appBindHtml [htmlValue]="post.message"></div>
+      <hr>
+      <app-post-comments [post]="post"></app-post-comments>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions #rootNode>
+    <button mat-icon-button aria-label="">
+      <mat-icon>info</mat-icon>
+    </button>
+    <button mat-button color="primary" appPostOwnerOnly [ownedPost]="post" [rootNode]="rootNode">
+      <span class="material-icons">edit</span>
+      Editar
+    </button>
+    <button mat-button color="warn" appPostOwnerOnly [ownedPost]="post" [rootNode]="rootNode">
+      <span class="material-icons">delete</span>
+      Remover
+    </button>
+    <div class="float-right" *ngIf="post.updatedAt">
+      <small>Editado em: {{ post.updatedAt | date:'short' }}</small>
+    </div>
+  </mat-card-actions>
+</mat-card>
