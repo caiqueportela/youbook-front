@@ -12,23 +12,21 @@
 
   </mat-card-header>
   <mat-card-content>
-    <mat-divider></mat-divider>
-    <div class="post">
-      <div appBindHtml [htmlValue]="post.message"></div>
-      <hr>
-      <app-post-comments [post]="post"></app-post-comments>
+    <div class="my-4">
+      <div class="text-break" appBindHtml [htmlValue]="post.message"></div>
     </div>
+    <app-post-comments [post]="post" [itemsPerPage]="commentsPerPage" [newCommentId]="newCommentId"></app-post-comments>
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-actions #rootNode>
-    <button mat-icon-button aria-label="">
+    <button mat-icon-button (click)="detail()">
       <mat-icon>info</mat-icon>
     </button>
-    <button mat-button color="primary" appPostOwnerOnly [ownedPost]="post" [rootNode]="rootNode">
+    <button mat-button color="primary" (click)="edit()" appPostOwnerOnly [ownedPost]="post" [rootNode]="rootNode">
       <span class="material-icons">edit</span>
       Editar
     </button>
-    <button mat-button color="warn" appPostOwnerOnly [ownedPost]="post" [rootNode]="rootNode">
+    <button mat-button color="warn" (click)="delete()" appPostOwnerOnly [ownedPost]="post" [rootNode]="rootNode">
       <span class="material-icons">delete</span>
       Remover
     </button>

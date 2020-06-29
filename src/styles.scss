@@ -20,6 +20,11 @@ body {
   background-color: var(--success) !important;
 }
 
+.snack-danger {
+  color: #FFF !important;
+  background-color: var(--danger) !important;
+}
+
 .fixed-bottom {
   z-index: 999 !important;
 }

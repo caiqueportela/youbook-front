@@ -12,19 +12,19 @@
 
   </mat-card-header>
   <mat-card-content>
-    <div class="comment">
-      {{ comment.message }}
+    <div class="my-4">
+      <div class="text-break" appBindHtml [htmlValue]="comment.message"></div>
     </div>
   </mat-card-content>
   <mat-card-actions #rootNode>
     <button mat-icon-button aria-label="">
       <mat-icon>info</mat-icon>
     </button>
-    <button mat-button color="primary" appCommentOwnerOnly [ownedComment]="comment" [rootNode]="rootNode">
+    <button mat-button color="primary" (click)="edit()" appCommentOwnerOnly [ownedComment]="comment" [rootNode]="rootNode">
       <span class="material-icons">edit</span>
       Editar
     </button>
-    <button mat-button color="warn" appCommentOwnerOnly [ownedComment]="comment" [rootNode]="rootNode">
+    <button mat-button color="warn" (click)="delete()" appCommentOwnerOnly [ownedComment]="comment" [rootNode]="rootNode">
       <span class="material-icons">delete</span>
       Remover
     </button>

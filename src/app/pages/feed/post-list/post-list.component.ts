@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/shared/services/post/post.service';
-import { finalize } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.scss']
+  styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
 
@@ -31,7 +30,6 @@ export class PostListComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
     private formBuilder: FormBuilder,
-    private router: Router,
     private snackBar: MatSnackBar
   ) { }
 
@@ -59,20 +57,32 @@ export class PostListComponent implements OnInit {
 
       this.postService
         .createPost(message)
-        .pipe(
-          finalize(
-            () => this.postForm.reset()
-          )
-        )
         .subscribe(
           () => {
+            this.postForm.reset();
             this.snackBar.open('Postagem criada com sucesso!', 'X', { duration: 2000, panelClass: 'snack-success' });
             this.currentPage = 1;
             this.postService.listPaginated().subscribe(posts => this.posts = posts);
           },
-          (err) => console.log(err)
+          (err) => {
+            console.log(err);
+            this.snackBar.open('Falha ao criar postagem!', 'X', { duration: 2000, panelClass: 'snack-danger' });
+          }
         );
     }
+  }
+
+  deletePost(post: Post) {
+    this.postService
+      .deletePost(post)
+      .subscribe(
+        () =>
+          this.posts = this.posts.filter(p => p.postId !== post.postId),
+        (err) => {
+          console.log(err);
+          this.snackBar.open('Falha ao deletar postagem', 'X', { duration: 2000, panelClass: 'snack-danger' });
+        }
+      );
   }
 
 }

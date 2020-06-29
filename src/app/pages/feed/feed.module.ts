@@ -17,6 +17,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostComponent } from './post/post.component';
 import { PostCommentsComponent } from './post-comments/post-comments.component';
 import { CommentComponent } from './comment/comment.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
+import { CommentEditComponent } from './comment-edit/comment-edit.component';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { CommentComponent } from './comment/comment.component';
     PostComponent,
     PostCommentsComponent,
     CommentComponent,
+    PostEditComponent,
+    CommentEditComponent,
   ],
 })
 export class FeedModule { }
