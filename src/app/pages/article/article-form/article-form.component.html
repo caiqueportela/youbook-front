@@ -1,0 +1,60 @@
+<form [formGroup]="articleForm" (submit)="sendForm()">
+  <div class="row">
+    <div class="col-12 my-3">
+      <h3 class="text-center my-2">
+        <span class="badge badge-pill badge-info">
+          <span class="material-icons">edit</span>
+          {{ article ? 'Editando' : 'Criando' }} artigo
+        </span>
+      </h3>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-8">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" [errorStateMatcher]="matcher" placeholder="Meu artigo" required>
+        <mat-error *ngIf="articleForm.get('title').hasError('required')">
+          Título é <strong>requerido</strong>!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-8">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Subtitulo</mat-label>
+        <input matInput formControlName="subtitle" [errorStateMatcher]="matcher" placeholder="Meu lindo artigo" required>
+        <mat-error *ngIf="articleForm.get('subtitle').hasError('required')">
+          Subtitulo é <strong>requerido</strong>!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-8">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Assunto</mat-label>
+        <mat-select formControlName="subject" [errorStateMatcher]="matcher" required>
+          <mat-option>Selecione um assunto</mat-option>
+          <mat-option *ngFor="let subject of subjects" [value]="subject.subjectId">
+            {{ subject.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="articleForm.get('subject').hasError('required')">
+          Assunto é <strong>requerido</strong>!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div [froalaEditor]="options" formControlName="content"></div>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-10 mt-3">
+      <button class="float-right" mat-raised-button color="primary" [disabled]="articleForm.invalid">
+        {{ article ? 'Editar' : 'Criar' }}
+      </button>
+    </div>
+  </div>
+</form>

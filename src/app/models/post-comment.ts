@@ -1,13 +1,8 @@
-import { User } from 'src/app/models/user';
 import { Post } from 'src/app/models/post';
+import { Comment } from 'src/app/models/comment';
 
-export class PostComment {
+export class PostComment extends Comment {
 
-  commentId: number;
-  owner: User;
-  message: string;
-  createdAt: Date;
-  updatedAt: Date;
   post: Post;
 
 }

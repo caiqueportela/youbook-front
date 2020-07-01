@@ -3,7 +3,6 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 
 import { PostService } from 'src/app/shared/services/post/post.service';
-import { Post } from 'src/app/models/post';
 import { PostComment } from 'src/app/models/post-comment';
 
 @Injectable({

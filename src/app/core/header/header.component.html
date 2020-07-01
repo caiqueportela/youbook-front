@@ -8,23 +8,18 @@
       Youbook
     </a>
     <div class="collapse navbar-collapse" id="navbarNavDropdown" #rootNode>
-      <ul class="navbar-nav mr-auto" appShowIfLogged [rootNode]="rootNode">
+      <ul class="navbar-nav mr-auto" #rootNodeUl appShowIfLogged [rootNode]="rootNode">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['feed']" routerLinkActive="active">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" [routerLink]="['article']" routerLinkActive="active">Artigos</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['course']" routerLinkActive="active">Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['admin']" appShowIfAdmin [rootNode]="rootNodeUl" routerLinkActive="active">Admin</a>
         </li>
         <li class="nav-item d-block d-lg-none d-xl-none">
           <button class="btn btn-danger mb-2" type="button" (click)="logout()">Sair</button>

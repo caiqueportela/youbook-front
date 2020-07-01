@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <form [formGroup]="subjectForm" (submit)="createSubject()">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" [errorStateMatcher]="matcher" placeholder="" required>
+            <mat-error *ngIf="subjectForm.get('name').hasError('required')">
+              Nome é <strong>requerido</strong>!
+            </mat-error>
+            <mat-error *ngIf="subjectForm.get('name').hasError('minlength')">
+              Tamanho mínimo é 3!
+            </mat-error>
+            <mat-error *ngIf="subjectForm.get('name').hasError('maxlength')">
+              Tamanho máximo é 200!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-8">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="description" [errorStateMatcher]="matcher" placeholder="" required>
+            <mat-error *ngIf="subjectForm.get('description').hasError('required')">
+              Descrição é <strong>requerido</strong>!
+            </mat-error>
+            <mat-error *ngIf="subjectForm.get('description').hasError('minlength')">
+              Tamanho mínimo é 3!
+            </mat-error>
+            <mat-error *ngIf="subjectForm.get('description').hasError('maxlength')">
+              Tamanho máximo é 200!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-10 mt-3">
+          <button class="float-right" mat-raised-button color="primary" [disabled]="subjectForm.invalid">Criar</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="col-2"></div>
+</div>

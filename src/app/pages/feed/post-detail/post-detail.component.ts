@@ -25,18 +25,17 @@ export class PostDetailComponent implements OnInit {
   commentForm: FormGroup;
   newCommentId = new Subject<number>();
 
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private formBuiler: FormBuilder
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.post = this.activatedRoute.snapshot.data.post;
-    this.commentForm = this.formBuiler.group({
+    this.commentForm = this.formBuilder.group({
       message: ['', [Validators.required, Validators.minLength(1)]],
     });
   }

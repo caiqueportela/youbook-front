@@ -20,7 +20,6 @@ export class PostListComponent implements OnInit {
   };
 
   posts: Post[] = [];
-  filter = '';
   hasMore = true;
   currentPage = 1;
 

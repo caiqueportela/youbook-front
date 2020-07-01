@@ -1,14 +1,14 @@
 import { Directive, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
 
-import { PostComment } from 'src/app/models/post-comment';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { Comment } from 'src/app/models/comment';
 
 @Directive({
   selector: '[appCommentOwnerOnly]'
 })
 export class CommentOwnerOnlyDirective implements OnInit {
 
-  @Input() ownedComment: PostComment;
+  @Input() ownedComment: Comment;
   @Input() rootNode;
 
   constructor(

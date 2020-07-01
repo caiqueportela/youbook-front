@@ -1,0 +1,33 @@
+<mat-card class="border border-primary my-3">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <ngx-avatar [name]="article.owner.username"></ngx-avatar>
+    </div>
+    <mat-card-title>
+      {{ article.owner.username }} - {{ article.group.name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ article.createdAt | date:'short' }}
+    </mat-card-subtitle>
+
+  </mat-card-header>
+  <mat-card-content>
+    <section class="my-4 text-center border border-info">
+      <h2>{{ article.title }}</h2>
+      <h5>{{ article.subtitle }}</h5>
+      <p class="text-right font-weight-lighter mr-2">{{ article.subject.name }}</p>
+    </section>
+    <section class="my-2" [ngClass]="{ 'article-section': preview }">
+      <div class="text-break article" [ngClass]="{ 'article-inactive': preview }" appBindHtml [htmlValue]="article.content"></div>
+    </section>
+    <button *ngIf="preview" class="read-more mb-3" (click)="detail()">
+      <span class="text">Ler mais</span>
+    </button>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions>
+    <div *ngIf="article.updatedAt">
+      <small>Editado em: {{ article.updatedAt | date:'short' }}</small>
+    </div>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,19 @@
+<div class="fixed-bottom mb-4 mr-4">
+  <button class="float-right" mat-fab color="primary" [routerLink]="['/article/create']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div class="row" *ngFor="let article of articles">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <app-specific-article [article]="article" preview="true"></app-specific-article>
+  </div>
+  <div class="col-3"></div>
+</div>
+
+<div class="text-center" *ngIf="hasMore">
+  <button mat-icon-button color="primary" (click)="load()">
+    <span class="material-icons">expand_more</span>
+  </button>
+</div>

@@ -1,0 +1,38 @@
+<div class="fixed-bottom mb-4 mr-4" #rootNode>
+  <div class="float-right" appArticleOwnerOnly [ownedArticle]="article" [rootNode]="rootNode">
+    <button class="mx-2" mat-fab color="primary" [routerLink]="['edit']">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-fab color="warn" (click)="deleteArticle()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <app-specific-article [article]="article"></app-specific-article>
+  </div>
+  <div class="col-2"></div>
+</div>
+<div class="row mt-4">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <app-article-comments [article]="article" [newCommentId]="newCommentId.asObservable()"></app-article-comments>
+  </div>
+  <div class="col-3"></div>
+</div>
+
+<form [formGroup]="commentForm" (submit)="makeComment()">
+  <div class="row mt-4">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div [froalaEditor]="options" formControlName="message"></div>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-10">
+      <button class="float-right" mat-raised-button color="primary" [disabled]="commentForm.invalid">Comente</button>
+    </div>
+  </div>
+</form>

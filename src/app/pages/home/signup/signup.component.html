@@ -29,7 +29,7 @@
       Tamanho mínimo é 3!
     </mat-error>
     <mat-error *ngIf="registerForm.get('username').hasError('maxlength')">
-      Tamanho mínimo é 30!
+      Tamanho máximo é 30!
     </mat-error>
     <mat-error *ngIf="registerForm.get('username').hasError('lowerCase')">
       Usuário deve ser em letras minúsculas!

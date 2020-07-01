@@ -19,7 +19,6 @@ export class PostService {
     private http: HttpClient
   ) { }
 
-
   listPaginated(page: number = 1): Observable<Post[]> {
     const params = new HttpParams().append('page', page.toString());
 
