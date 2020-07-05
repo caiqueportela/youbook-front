@@ -46,7 +46,7 @@
       <div class="col-8">
         <div class="border border-secondary rounded my-1">
           <div class="my-1 mx-1">
-            <h6 class="text-break">
+            <h6 class="text-break" appCourseOwnerOnly [ownedCourse]="course" [rootNode]="chaptersNode">
               {{ chapter.title }}
               <a mat-button class="text-info icon" [routerLink]="['..', 'chapter', chapter.chapterId, 'edit']">
                 <mat-icon>edit</mat-icon>
@@ -59,18 +59,22 @@
             <ul>
               <li class="font-weight-light" *ngFor="let activity of chapter.activities">
                 {{ activity.title }}
-                <a mat-button class="text-info icon" [routerLink]="['..', 'chapter', chapter.chapterId, 'activity', activity.activityId, 'edit']">
-                  <mat-icon>edit</mat-icon>
-                </a>
-                <a mat-button class="text-danger icon" (click)="deleteActivity(chapter, activity)">
-                  <mat-icon>delete</mat-icon>
-                </a>
+                <div appCourseOwnerOnly [ownedCourse]="course" [rootNode]="chaptersNode">
+                  <a mat-button class="text-info icon" [routerLink]="['..', 'chapter', chapter.chapterId, 'activity', activity.activityId, 'edit']">
+                    <mat-icon>edit</mat-icon>
+                  </a>
+                  <a mat-button class="text-danger icon" (click)="deleteActivity(chapter, activity)">
+                    <mat-icon>delete</mat-icon>
+                  </a>
+                </div>
               </li>
             </ul>
-            <a mat-button class="text-primary" [routerLink]="['..', 'chapter', chapter.chapterId, 'activity', 'create']">
-              <mat-icon>add</mat-icon>
-              Adicionar Atividade
-            </a>
+            <div appCourseOwnerOnly [ownedCourse]="course" [rootNode]="chaptersNode">
+              <a mat-button class="text-primary" [routerLink]="['..', 'chapter', chapter.chapterId, 'activity', 'create']">
+                <mat-icon>add</mat-icon>
+                Adicionar Atividade
+              </a>
+            </div>
           </div>
         </div>
       </div>
