@@ -18,8 +18,7 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private articleService: ArticleService,
-    private snackBar: MatSnackBar
+    private articleService: ArticleService
   ) { }
 
   ngOnInit(): void {

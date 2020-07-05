@@ -14,6 +14,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -35,6 +37,8 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatSnackBarModule,
     MatTableModule,
+    MatMenuModule,
+    MatTooltipModule,
   ],
 })
 export class AngularMaterialModule {}

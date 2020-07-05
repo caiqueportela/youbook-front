@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <mat-card class="border border-primary my-1">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <ngx-avatar [name]="user.username"></ngx-avatar>
+        </div>
+        <mat-card-title>
+          {{ user.username }} - {{ user.email }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        {{ getRolesName() }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-1"></div>
+</div>

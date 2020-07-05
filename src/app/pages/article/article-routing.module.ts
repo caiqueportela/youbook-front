@@ -10,6 +10,7 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { ArticleCommentDetailResolver } from 'src/app/shared/resolvers/article-comment-detail.resolver';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { ArticleCreateComponent } from './article-create/article-create.component';
+import { AuthorGuard } from 'src/app/core/guards/author.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       {
         path: 'create',
         component: ArticleCreateComponent,
+        canActivate: [AuthorGuard],
       },
       {
         path: ':articleId',
@@ -43,6 +45,7 @@ const routes: Routes = [
             resolve: {
               article: ArticleDetailResolver,
             },
+            canActivate: [AuthorGuard],
           },
           {
             path: 'comment/:commentId/edit',

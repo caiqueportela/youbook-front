@@ -1,9 +1,11 @@
+import { Role } from './role';
 export class User {
 
   userId: number;
   username: string;
   email: string;
-  roles: string[];
   isAdmin: boolean;
+  isAuthor: boolean;
+  roles: Role[];
 
 }

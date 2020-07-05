@@ -1,5 +1,5 @@
-<div class="fixed-bottom mb-4 mr-4">
-  <button class="float-right" mat-fab color="primary" [routerLink]="['/article/create']">
+<div class="fixed-bottom mb-4 mr-4" #rootNode>
+  <button class="float-right" appShowIfAuthor [rootNode]="rootNode" mat-fab color="primary" [routerLink]="['/article/create']">
     <mat-icon>add</mat-icon>
   </button>
 </div>

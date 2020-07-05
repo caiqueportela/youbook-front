@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpParams, HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators';
 import * as jwt_decode from 'jwt-decode';
+
+import { environment } from 'src/environments/environment';
 
 import { TokenService } from 'src/app/core/services/token/token.service';
 import { User } from 'src/app/models/user';
+
+const API_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +20,8 @@ export class UserService {
   private user: User;
 
   constructor(
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private http: HttpClient
   ) {
     if (this.tokenService.hasToken()) {
       this.decodeAndNotify();
@@ -47,6 +54,22 @@ export class UserService {
 
   getCurrentUser() {
     return this.user;
+  }
+
+  listPaginated(page: number): Observable<User[]> {
+    const params = new HttpParams().append('page', page.toString());
+
+    return this.http
+      .get(`${API_URL}/api/users`, { params })
+      .pipe(
+        map((response: any) =>
+          response.items as User[]
+        )
+      );
+  }
+
+  signup(formData: any) {
+    return this.http.post(`${API_URL}/api/user/register`, formData);
   }
 
 }

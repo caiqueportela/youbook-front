@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <mat-card class="border border-success my-3">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <ngx-avatar [name]="course.owner.username"></ngx-avatar>
+        </div>
+        <mat-card-title>
+          {{ course.owner.username }} - {{ course.group.name }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ course.createdAt | date:'short' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <section class="my-4 text-center border-top border-bottom border-secondary">
+          <h2>{{ course.title }}</h2>
+          <h5>{{ course.subtitle }}</h5>
+          <p class="text-right font-weight-lighter mr-4">{{ course.subject.name }}</p>
+        </section>
+        <section class="my-2 description">
+          <div class="text-break" appBindHtml [htmlValue]="course.description"></div>
+        </section>
+        <div class="d-flex justify-content-center">
+          <button mat-fab color="primary" class="my-2 mr-2" [routerLink]="['/', 'course', course.courseId]">
+            <span class="material-icons">remove_red_eye</span>
+          </button>
+          <button mat-raised-button color="primary" class="my-2 ml-2" *ngIf="purchased" [routerLink]="['..', course.courseId, 'view']">
+            <span class="material-icons">keyboard_arrow_right</span>
+            Ir para o curso
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-card-content>
+      <mat-card-actions>
+        <div *ngIf="course.updatedAt">
+          <small>Editado em: {{ course.updatedAt | date:'short' }}</small>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+  <div class="col-3"></div>
+</div>

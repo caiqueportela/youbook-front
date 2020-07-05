@@ -15,8 +15,15 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['article']" routerLinkActive="active">Artigos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['course']" routerLinkActive="active">Cursos</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cursos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['course']">Todos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['course', 'purchased']">Adquiridos</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['admin']" appShowIfAdmin [rootNode]="rootNodeUl" routerLinkActive="active">Admin</a>

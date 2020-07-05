@@ -1,0 +1,81 @@
+<mat-drawer-container class="drawer-container" hasBackdrop="false">
+  <mat-drawer #drawer class="drawer" mode="push">
+    <mat-nav-list>
+      <a mat-list-item class="menu" type="button" aria-label="Toggle sidenav" (click)="drawer.toggle()" matTooltip="Menu">
+        <mat-icon class="material-icons">menu</mat-icon>
+      </a>
+      <mat-divider></mat-divider>
+      <div>
+        <a mat-list-item class="menu" type="button" [matMenuTriggerFor]="menu" matTooltip="Selecionar capitulo">
+          <mat-icon>more_vert</mat-icon>
+          <span class="navigation-item-label ml-1 text-truncate">Capitulos</span>
+        </a>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let chapter of course.chapters" (click)="selectChapter(chapter)" [matTooltip]="chapter.title">
+            <mat-icon>menu_book</mat-icon>
+            <span>{{ chapter.title }}</span>
+          </button>
+        </mat-menu>
+      </div>
+      <mat-divider></mat-divider>
+      <a mat-list-item type="buttom" [matTooltip]="selectedChapter.title">
+        <span class="material-icons">topic</span>
+        <span class="navigation-item-label ml-1 text-truncate">{{ selectedChapter.title }}</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="selectActivity(activity)" *ngFor="let activity of activities; let i = index" [matTooltip]="activity.title">
+        <span>{{ i + 1 }}º </span>
+        <span class="navigation-item-label ml-1 text-truncate">{{ activity.title }}</span>
+      </a>
+      <mat-divider></mat-divider>
+      <div class="d-flex justify-content-center">
+        <button mat-raised-button color="primary" class="navigation-item-label text-center my-2" (click)="concludeCourse()" [disabled]="!canConclude">Concluir curso</button>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="drawer-content">
+      <div class="bg-info">
+        <div class="row my-2">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col-2 media">
+                <img src="/assets/img/course.jpg" class="align-self-center mr-3 rounded img-thumbnail" alt="Course image">
+              </div>
+              <div class="col-8">
+                <h2 class="font-weight-bold">{{ course.title }}</h2>
+                <h3 class="font-weight-light text-break">{{ course.subtitle }}</h3>
+                <strong>Capitulo: </strong>
+                <span>{{ selectedChapter.title }}</span>
+              </div>
+              <div class="col-2"><strong>{{ percentage }}%</strong> Concluido</div>
+            </div>
+          </div>
+          <div class="col-2">
+            <button mat-raised-button color="primary" class="text-center my-2" (click)="nextActivity()">Próxima atividade</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h3 class="text-center">
+            <span class="badge badge-pill badge-primary">
+              <span class="mx-2 my-2">
+                {{ selectedActivity.title }}
+              </span>
+            </span>
+          </h3>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="text-break mx-4 px-4" appBindHtml [htmlValue]="selectedActivity.content"></div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

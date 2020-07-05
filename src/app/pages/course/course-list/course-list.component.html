@@ -1,0 +1,27 @@
+<div class="fixed-bottom mb-4 mr-4" #rootNode>
+  <button class="float-right" appShowIfAuthor [rootNode]="rootNode" mat-fab color="primary" [routerLink]="['/course/create']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div *ngFor="let course of courses">
+  <app-specific-course [course]="course"></app-specific-course>
+</div>
+
+<div class="my-4" *ngIf="courses.length === 0">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="alert alert-info text-center" role="alert">
+        Nenhum curso encontrado!
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
+
+<div class="text-center" *ngIf="hasMore">
+  <button mat-icon-button color="primary" (click)="load()">
+    <span class="material-icons">expand_more</span>
+  </button>
+</div>

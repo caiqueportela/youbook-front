@@ -1,0 +1,94 @@
+<div class="fixed-bottom mb-4 mr-4" #rootNode>
+  <div class="float-right" appCourseOwnerOnly [ownedCourse]="course" [rootNode]="rootNode">
+    <button class="mx-2" mat-fab color="primary" [routerLink]="['edit']">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-fab color="warn" (click)="deleteCourse()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="bg-info border border-primary mt-3">
+  <div class="row my-3">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-2 media">
+          <img src="/assets/img/course.jpg" class="align-self-center mr-3 rounded img-thumbnail" alt="Course image">
+        </div>
+        <div class="col-8">
+          <h1 class="display-4 font-weight-bold">{{ course.title }}</h1>
+          <h3 class="font-weight-light text-break">{{ course.subtitle }}</h3>
+        </div>
+        <div class="col-2">By {{ course.owner.username }}</div>
+      </div>
+    </div>
+    <div class="col-2" #buttonBuy>
+      <button mat-raised-button color="accent" appUserCanBuyCourse [course]="course" [rootNode]="buttonBuy" (click)="buyCourse()">Comprar curso</button>
+    </div>
+  </div>
+</div>
+<div class="row my-4">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="text-break mx-4 px-4" appBindHtml [htmlValue]="course.description"></div>
+  </div>
+  <div class="col-2"></div>
+</div>
+
+<div class="row my-4" #chaptersNode>
+  <div class="col-2"></div>
+  <div class="col-8">
+    <h4>Capítulos</h4>
+    <div class="row" *ngFor="let chapter of course.chapters">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="border border-secondary rounded my-1">
+          <div class="my-1 mx-1">
+            <h6 class="text-break">
+              {{ chapter.title }}
+              <a mat-button class="text-info icon" [routerLink]="['..', 'chapter', chapter.chapterId, 'edit']">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a mat-button class="text-danger icon" (click)="deleteChapter(chapter)">
+                <mat-icon>delete</mat-icon>
+              </a>
+            </h6>
+            <div class="text-break" appBindHtml [htmlValue]="chapter.description"></div>
+            <ul>
+              <li class="font-weight-light" *ngFor="let activity of chapter.activities">
+                {{ activity.title }}
+                <a mat-button class="text-info icon" [routerLink]="['..', 'chapter', chapter.chapterId, 'activity', activity.activityId, 'edit']">
+                  <mat-icon>edit</mat-icon>
+                </a>
+                <a mat-button class="text-danger icon" (click)="deleteActivity(chapter, activity)">
+                  <mat-icon>delete</mat-icon>
+                </a>
+              </li>
+            </ul>
+            <a mat-button class="text-primary" [routerLink]="['..', 'chapter', chapter.chapterId, 'activity', 'create']">
+              <mat-icon>add</mat-icon>
+              Adicionar Atividade
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row my-3" appCourseOwnerOnly [ownedCourse]="course" [rootNode]="chaptersNode">
+      <div class="col-1"></div>
+      <div class="col-8">
+        <a mat-button class="text-primary" [routerLink]="['..', 'chapter', 'create']">
+          <mat-icon>add</mat-icon>
+          Adicionar capitulo
+        </a>
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+  </div>
+  <div class="col-2"></div>
+</div>
+

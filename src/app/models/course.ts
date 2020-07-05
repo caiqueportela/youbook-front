@@ -1,29 +1,25 @@
-import { Author } from './author';
+import { Evaluation } from './evaluation';
+import { Chapter } from './chapter';
+import { User } from './user';
+import { Subject } from './subject';
+import { Group } from './group';
 
 export class Course {
 
-  id: number;
-  name: string;
+  courseId: number;
+  subject: Subject;
+  owner: User;
+  group: Group;
+  title: string;
+  subtitle: string;
   description: string;
-  creationDate: Date;
-  author: Author;
-  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+  chapters: Chapter[];
+  deleted: boolean;
+  evaluations: Evaluation[];
 
   constructor() {
-    this.author = new Author();
-  }
-
-  static mockCourse() {
-    const course = new Course();
-    course.id = Number.parseInt((Math.random() * 100).toFixed(0), 0);
-    course.name = `Curso 0${course.id}`;
-    course.description = 'AAAAAAAAAAAAAAAAAAAAA';
-    course.creationDate = new Date();
-    course.author.id = Math.random() * 100;
-    course.author.name = 'Nome';
-    course.status = "Show";
-
-    return course;
   }
 
 }

@@ -6,6 +6,8 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
 import { SubjectListResolver } from 'src/app/shared/resolvers/subject-list.resolver';
 import { SubjectCreateComponent } from './subject-create/subject-create.component';
+import { UserListResolver } from 'src/app/shared/resolvers/user-list.resolver';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,19 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ListUsersComponent
+        component: ListUsersComponent,
+        resolve: {
+          users: UserListResolver,
+        },
+      },
+      {
+        path: 'user',
+        children: [
+          {
+            path: 'create',
+            component: CreateUserComponent,
+          },
+        ],
       },
       {
         path: 'subject',

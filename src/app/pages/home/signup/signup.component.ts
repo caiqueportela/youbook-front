@@ -7,7 +7,6 @@ import { UserNotTakenValidatorService } from 'src/app/core/services/user-not-tak
 import { SignupService } from 'src/app/core/services/signup/signup.service';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
 import { userNamePassword } from 'src/app/shared/validators/username-password.validator';
-import { NewUser } from 'src/app/models/new-user';
 import { MaterialStateMatcher } from 'src/app/shared/modules/angular-material/material-state-matcher';
 
 @Component({
@@ -76,9 +75,9 @@ export class SignupComponent implements OnInit, AfterViewInit {
 
   register() {
     if (this.registerForm.valid && !this.registerForm.pending) {
-      const newUser = this.registerForm.getRawValue() as NewUser;
+      const userData = this.registerForm.getRawValue();
       this.signupService
-        .signup(newUser)
+        .signup(userData)
         .subscribe(
           () => {
             this.snackBar.open('Usuário cadastrado com sucesso!', 'X', { duration: 2000, panelClass: 'snack-success' });

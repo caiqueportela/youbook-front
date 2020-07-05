@@ -46,6 +46,11 @@ export class ArticleService {
       .post(`${API_URL}/api/article`, article);
   }
 
+  updateArticle(article: Article, formData: any) {
+    return this.http
+      .patch(`${API_URL}/api/article/${article.articleId}`, formData);
+  }
+
   retrieveComment(articleId: number, commentId: number): Observable<ArticleComment> {
     return this.http
       .get<ArticleComment>(`${API_URL}/api/article/${articleId}/comment/${commentId}`);

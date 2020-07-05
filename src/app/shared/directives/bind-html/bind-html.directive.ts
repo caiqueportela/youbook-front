@@ -1,9 +1,9 @@
-import { Directive, OnInit, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[appBindHtml]'
 })
-export class BindHtmlDirective implements OnInit {
+export class BindHtmlDirective implements OnChanges {
 
   @Input() htmlValue = '';
 
@@ -11,7 +11,7 @@ export class BindHtmlDirective implements OnInit {
     private element: ElementRef<any>
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.element.nativeElement.innerHTML = this.htmlValue;
   }
 

@@ -11,6 +11,9 @@ import { CommentOwnerOnlyDirective } from './directives/comment-owner-only/comme
 import { BindHtmlDirective } from './directives/bind-html/bind-html.directive';
 import { ArticleOwnerOnlyDirective } from './directives/article-owner-only/article-owner-only.directive';
 import { ShowIfAdminDirective } from './directives/show-if-admin/show-if-admin.directive';
+import { ShowIfAuthorDirective } from './directives/show-if-author/show-if-author.directive';
+import { CourseOwnerOnlyDirective } from './directives/course-owner-only/course-owner-only.directive';
+import { UserCanBuyCourseDirective } from './directives/user-can-buy-course/user-can-buy-course.directive';
 
 @NgModule({
   imports: [
@@ -27,6 +30,9 @@ import { ShowIfAdminDirective } from './directives/show-if-admin/show-if-admin.d
     BindHtmlDirective,
     ArticleOwnerOnlyDirective,
     ShowIfAdminDirective,
+    ShowIfAuthorDirective,
+    CourseOwnerOnlyDirective,
+    UserCanBuyCourseDirective,
   ],
   exports: [
     DangerMessageComponent,
@@ -37,6 +43,9 @@ import { ShowIfAdminDirective } from './directives/show-if-admin/show-if-admin.d
     BindHtmlDirective,
     ArticleOwnerOnlyDirective,
     ShowIfAdminDirective,
+    ShowIfAuthorDirective,
+    CourseOwnerOnlyDirective,
+    UserCanBuyCourseDirective,
   ],
 })
 export class SharedModule { }

@@ -13,8 +13,6 @@ import { ArticleService } from 'src/app/shared/services/article/article.service'
 export class ArticleEditComponent implements OnInit {
 
   article: Article;
-  hasMore = true;
-  currentPage = 1;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,11 +27,11 @@ export class ArticleEditComponent implements OnInit {
 
   createArticle(formData: any) {
     this.articleService
-      .createArticle(formData)
+      .updateArticle(this.article, formData)
       .subscribe(
         (res: any) => {
           this.snackBar.open('Artigo atualizado com sucesso!', 'X', { duration: 2000, panelClass: 'snack-success' });
-          this.router.navigate(['article', res.articleId]);
+          this.router.navigate(['article', this.article.articleId]);
         },
         (err) => {
           console.log(err);
